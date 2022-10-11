@@ -57,7 +57,7 @@ public class ProjetoIntegrador {
         opcaoEscolhida = input.nextInt();
 
         switch (opcaoEscolhida){
-            case 1: /*incluirPessoa();*/ System.out.println("Não implementado!");
+            case 1: /*IncluirPessoas();*/ System.out.println("Não implementado!");
                     break;
             case 2: /*incluirTipoObjeto();*/ System.out.println("Não implementado!");
                     break;
