@@ -47,9 +47,9 @@ public class ProjetoIntegrador {
 
         Scanner input = new Scanner(System.in);
 
-        System.out.println("1. Incluir pessoa");
-        System.out.println("2. Incluir tipos de objeto");
-        System.out.println("3. Incluir objeto");
+        System.out.println("1. Incluir Pessoa");
+        System.out.println("2. Incluir Tipos de objeto");
+        System.out.println("3. Incluir Objeto");
         System.out.println("4. Voltar ao menu principal");
         System.out.println("5. Sair");
         System.out.println("Digite o número da opção: ");
