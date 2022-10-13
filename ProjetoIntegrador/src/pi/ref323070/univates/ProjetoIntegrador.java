@@ -33,7 +33,7 @@ public class ProjetoIntegrador {
                 break;
             case 5: System.out.println("Não implementado!");
                 break;      
-            case 6: System.out.println("Não implementado!");
+            case 6: cadastrarManutencao();
                 break;
             case 7: break;
             default: 
@@ -95,7 +95,7 @@ public class ProjetoIntegrador {
                 break;
             case 3: /*consultaObjeto();*/ System.out.println("Não implementado!");
                 break;
-            case 4: /*consultaManutencao();*/ System.out.println("Não implementado!");
+            case 4: consultarManutencao();
                 break;
             case 5: /*consultaEmprestimo();*/ System.out.println("Não implementado!");
             case 6: menuPrincipal();
@@ -175,5 +175,58 @@ public class ProjetoIntegrador {
                 System.out.println("Opção inválida!");
                 menuEditar();
         }
+    }
+    
+    public static void cadastrarManutencao(){
+        int opcao;
+        String nomeObjeto, descricao, status;
+        boolean cadastrar=true;
+        
+        Scanner input = new Scanner(System.in);
+        
+        String matrizManut[][] = new String[1][3];
+        
+        
+            for (int x=0; x<matrizManut.length; x++){
+                for (int y=0; y<matrizManut.length; y++){
+                                                
+                        System.out.println("Preencha os campos necessários: ");
+                        System.out.print("Objeto: ");
+                            nomeObjeto = input.nextLine();
+                            matrizManut[x][y] = nomeObjeto;
+                        System.out.print("Descrição manut.: ");
+                            descricao = input.nextLine();
+                            matrizManut[x][(y + 1)] = descricao;
+                        System.out.print("Status : ");
+                            status = input.nextLine();
+                            matrizManut[x][(y + 2)] = status;
+                        System.out.println("Manutenção cadastrada com sucesso !");
+                }
+            }
+            
+            for (int a = 0; a < 1; a ++){
+                for (int b = 0; b < 3; b ++){
+                                System.out.print(matrizManut[a][b] + "      |     ");
+                }
+            }
+                        
+            menuPrincipal();
+                        
+                        
+                        /*System.out.println("Digite 1 para cadastrar uma nova manutenção ou 0 para sair.");
+                            opcao = input.nextInt();
+
+                                switch (opcao){
+                                    case 1:
+                                        break;
+                                    case 0:
+                                        menuPrincipal();
+                                    default:
+                                        System.out.println("Opção inválida!");
+                                }*/
+    }
+    
+    public static void consultarManutencao(){
+        System.out.println("Não implementado");
     }
 }
