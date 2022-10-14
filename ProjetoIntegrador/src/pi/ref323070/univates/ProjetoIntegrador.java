@@ -59,7 +59,7 @@ public class ProjetoIntegrador {
         switch (opcaoEscolhida){
             case 1: /*IncluirPessoas();*/ System.out.println("Não implementado!");
                     break;
-            case 2: /*incluirTipoObjeto();*/ System.out.println("Não implementado!");
+            case 2: incluirTipoObjeto();
                     break;
             case 3: /*incluirObjeto();*/ System.out.println("Não implementado!");
                     break; 
@@ -186,23 +186,39 @@ public class ProjetoIntegrador {
         
         String matrizManut[][] = new String[1][3];
         
-        
+        while (cadastrar == true){
             for (int x=0; x<matrizManut.length; x++){
                 for (int y=0; y<matrizManut.length; y++){
+                        
+                        int linha=0;
                                                 
                         System.out.println("Preencha os campos necessários: ");
                         System.out.print("Objeto: ");
                             nomeObjeto = input.nextLine();
-                            matrizManut[x][y] = nomeObjeto;
+                            matrizManut[x + linha][y] = nomeObjeto;
                         System.out.print("Descrição manut.: ");
                             descricao = input.nextLine();
-                            matrizManut[x][(y + 1)] = descricao;
+                            matrizManut[x + linha][(y + 1)] = descricao;
                         System.out.print("Status : ");
                             status = input.nextLine();
-                            matrizManut[x][(y + 2)] = status;
+                            matrizManut[x + linha][(y + 2)] = status;
                         System.out.println("Manutenção cadastrada com sucesso !");
+                        
+                        linha++;
+                        
+                        
                 }
             }
+            System.out.print("Continuar 1 sim 2 nao ?");
+                        opcao = input.nextInt();
+                        if (opcao == 1){
+                            cadastrar = true;
+                        }
+                        if (opcao == 0){
+                            cadastrar = false;
+                            break;
+                        }
+        }
             
             for (int a = 0; a < 1; a ++){
                 for (int b = 0; b < 3; b ++){
@@ -228,5 +244,40 @@ public class ProjetoIntegrador {
     
     public static void consultarManutencao(){
         System.out.println("Não implementado");
+    }
+    
+    public static void incluirTipoObjeto(){
+        String nome;
+        int codigo, opcao;
+        boolean cadastrar = true;
+        
+        String tipoObjeto[] = new String[999];
+        
+        Scanner input = new Scanner (System.in);
+        Scanner input2 = new Scanner (System.in);
+        
+        while (cadastrar==true){
+            for (int x=0; x<tipoObjeto.length; x++){
+                System.out.print("Digite o nome do tipo de objeto: ");
+                nome = input.nextLine();
+                
+                System.out.println("Tipo de objeto cadastrado!");
+                System.out.print("Digite '1' p/ sair ou '2' para cadastrar um novo tipo: ");
+                opcao = input2.nextInt();
+                
+                if (opcao == 1){
+                    cadastrar = false;
+                    break;
+                }
+                if (opcao == 2){
+                    cadastrar = true;
+                }
+            
+            }
+        }
+        
+        for (int x=0; x<tipoObjeto.length; x++){
+                System.out.println(tipoObjeto[x]);
+        }
     }
 }
