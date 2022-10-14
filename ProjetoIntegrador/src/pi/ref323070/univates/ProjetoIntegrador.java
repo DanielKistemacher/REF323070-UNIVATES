@@ -4,10 +4,13 @@ import java.util.Scanner;
 
 public class ProjetoIntegrador {
     public static void main(String[] args) {
+        
+        String objetos[] = new String[999];
+        
         menuPrincipal();        
     }
     public static void menuPrincipal(){
-        Scanner input = new Scanner(System.in);
+        Scanner menuPrincipal = new Scanner(System.in);
         int opcaoEscolhida;
 
         System.out.println("SISTEMA DE EMPRÉSTIMO DE OBJETOS");
@@ -20,7 +23,7 @@ public class ProjetoIntegrador {
         System.out.println("7. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = input.nextInt();
+        opcaoEscolhida = menuPrincipal.nextInt();
 
         switch (opcaoEscolhida){
             case 1: menuIncluir();
@@ -45,8 +48,9 @@ public class ProjetoIntegrador {
     public static void menuIncluir(){
         int opcaoEscolhida;
 
-        Scanner input = new Scanner(System.in);
+        Scanner menuIncluir = new Scanner(System.in);
 
+        System.out.println("===== MENU INCLUIR =====");
         System.out.println("1. Incluir pessoa");
         System.out.println("2. Incluir tipos de objeto");
         System.out.println("3. Incluir objeto");
@@ -54,12 +58,12 @@ public class ProjetoIntegrador {
         System.out.println("5. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = input.nextInt();
+        opcaoEscolhida = menuIncluir.nextInt();
 
         switch (opcaoEscolhida){
             case 1: /*IncluirPessoas();*/ System.out.println("Não implementado!");
                     break;
-            case 2: incluirTipoObjeto();
+            case 2: 
                     break;
             case 3: /*incluirObjeto();*/ System.out.println("Não implementado!");
                     break; 
@@ -75,8 +79,9 @@ public class ProjetoIntegrador {
     public static void menuConsultar(){
         int opcaoEscolhida;
 
-        Scanner input = new Scanner(System.in);
+        Scanner menuConsultar = new Scanner(System.in);
 
+        System.out.println("===== MENU CONSULTAR =====");
         System.out.println("1. Consultar pessoas");
         System.out.println("2. Consultar tipos de objetos");
         System.out.println("3. Consultar objetos");
@@ -86,7 +91,7 @@ public class ProjetoIntegrador {
         System.out.println("7. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = input.nextInt();
+        opcaoEscolhida = menuConsultar.nextInt();
 
         switch (opcaoEscolhida){
             case 1: /*consultaPessoa();*/ System.out.println("Não implementado!");
@@ -95,7 +100,7 @@ public class ProjetoIntegrador {
                 break;
             case 3: /*consultaObjeto();*/ System.out.println("Não implementado!");
                 break;
-            case 4: consultarManutencao();
+            case 4: /*consultarManutencao();*/ System.out.println("Não implementado!");
                 break;
             case 5: /*consultaEmprestimo();*/ System.out.println("Não implementado!");
             case 6: menuPrincipal();
@@ -110,8 +115,9 @@ public class ProjetoIntegrador {
     public static void menuExcluir(){
         int opcaoEscolhida;
 
-        Scanner input = new Scanner(System.in);
+        Scanner menuExcluir = new Scanner(System.in);
 
+        System.out.println("===== MENU EXCLUIR =====");
         System.out.println("1. Excluir Pessoas");
         System.out.println("2. Excluir tipos de objetos");
         System.out.println("3. Excluir objetos");
@@ -121,7 +127,7 @@ public class ProjetoIntegrador {
         System.out.println("7. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = input.nextInt();
+        opcaoEscolhida = menuExcluir.nextInt();
 
         switch (opcaoEscolhida){
             case 1: /*excluirPessoa();*/ System.out.println("Não implementado!");
@@ -146,8 +152,9 @@ public class ProjetoIntegrador {
     public static void menuEditar(){
         int opcaoEscolhida;
 
-        Scanner input = new Scanner(System.in);
+        Scanner menuEditar = new Scanner(System.in);
 
+        System.out.println("===== MENU EDITAR =====");
         System.out.println("1. Editar pessoas");
         System.out.println("2. Editar tipos de objetos");
         System.out.println("3. Editar objetos");
@@ -157,7 +164,7 @@ public class ProjetoIntegrador {
         System.out.println("7. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = input.nextInt();
+        opcaoEscolhida = menuEditar.nextInt();
 
         switch (opcaoEscolhida){
             case 1: /*editarPessoa();*/System.out.println("Não implementado!");
@@ -177,107 +184,110 @@ public class ProjetoIntegrador {
         }
     }
     
-    public static void cadastrarManutencao(){
+    public static void cadastrarManutencao()
+    {
         int opcao;
         String nomeObjeto, descricao, status;
         boolean cadastrar=true;
         
-        Scanner input = new Scanner(System.in);
+        Scanner cadastrarManutencao = new Scanner(System.in);
+        Scanner continuar = new Scanner(System.in);
         
         String matrizManut[][] = new String[1][3];
         
         while (cadastrar == true){
-            for (int x=0; x<matrizManut.length; x++){
-                for (int y=0; y<matrizManut.length; y++){
+            for (int x=0; x<matrizManut.length; x++)
+            {
+                for (int y=0; y<matrizManut.length; y++)
+                {
                         
                         int linha=0;
                                                 
                         System.out.println("Preencha os campos necessários: ");
                         System.out.print("Objeto: ");
-                            nomeObjeto = input.nextLine();
+                            nomeObjeto = cadastrarManutencao.nextLine().toUpperCase();
                             matrizManut[x + linha][y] = nomeObjeto;
                         System.out.print("Descrição manut.: ");
-                            descricao = input.nextLine();
+                            descricao = cadastrarManutencao.nextLine().toUpperCase();
                             matrizManut[x + linha][(y + 1)] = descricao;
                         System.out.print("Status : ");
-                            status = input.nextLine();
+                            status = cadastrarManutencao.nextLine().toUpperCase();;
                             matrizManut[x + linha][(y + 2)] = status;
                         System.out.println("Manutenção cadastrada com sucesso !");
                         
                         linha++;
-                        
-                        
                 }
             }
             System.out.print("Continuar 1 sim 2 nao ?");
-                        opcao = input.nextInt();
-                        if (opcao == 1){
+                        opcao = continuar.nextInt();
+                        if (opcao == 1)
+                        {
                             cadastrar = true;
                         }
-                        if (opcao == 0){
+                        if (opcao == 0)
+                        {
                             cadastrar = false;
                             break;
                         }
         }
             
-            for (int a = 0; a < 1; a ++){
-                for (int b = 0; b < 3; b ++){
+            for (int a = 0; a < 1; a ++)
+            {
+                for (int b = 0; b < 3; b ++)
+                {
                                 System.out.print(matrizManut[a][b] + "      |     ");
                 }
             }
-                        
             menuPrincipal();
-                        
-                        
-                        /*System.out.println("Digite 1 para cadastrar uma nova manutenção ou 0 para sair.");
-                            opcao = input.nextInt();
-
-                                switch (opcao){
-                                    case 1:
-                                        break;
-                                    case 0:
-                                        menuPrincipal();
-                                    default:
-                                        System.out.println("Opção inválida!");
-                                }*/
     }
-    
-    public static void consultarManutencao(){
-        System.out.println("Não implementado");
-    }
-    
-    public static void incluirTipoObjeto(){
+        
+    public void incluirTipoObjeto(String[] vet)
+    {
         String nome;
-        int codigo, opcao;
+        int opcao;
         boolean cadastrar = true;
         
-        String tipoObjeto[] = new String[999];
+        Scanner incluirTipoObjeto = new Scanner (System.in);
+        Scanner continuar = new Scanner (System.in);
         
-        Scanner input = new Scanner (System.in);
-        Scanner input2 = new Scanner (System.in);
         
-        while (cadastrar==true){
-            for (int x=0; x<tipoObjeto.length; x++){
-                System.out.print("Digite o nome do tipo de objeto: ");
-                nome = input.nextLine();
-                
-                System.out.println("Tipo de objeto cadastrado!");
-                System.out.print("Digite '1' p/ sair ou '2' para cadastrar um novo tipo: ");
-                opcao = input2.nextInt();
-                
-                if (opcao == 1){
-                    cadastrar = false;
-                    break;
-                }
-                if (opcao == 2){
-                    cadastrar = true;
-                }
-            
+        while (cadastrar == true)
+        {
+            for (int x = 0; x < vet.length; x++)
+            {    
+                    System.out.println("===== INCLUSÃO DE TIPO DE OBJETO =====");
+                    System.out.println("Código: " + "00" + (x + 1));
+                    System.out.print("Nome: ");
+                    nome = incluirTipoObjeto.nextLine().toUpperCase();
+
+                    vet[x] = nome;
+
+                    System.out.println("Tipo '" + vet[x] + "' cadastrado com sucesso!");
+                    System.out.println();
+                        System.out.println("Digite 0 para sair;");
+                        System.out.println("Digite 1 para continuar;");
+
+                        opcao = continuar.nextInt();
+
+                        if (opcao==1)
+                        {
+                            cadastrar = true;
+                        }
+                        if (opcao == 0)
+                        {
+                            break;
+                        }
             }
+            menuPrincipal();
         }
+    }
         
-        for (int x=0; x<tipoObjeto.length; x++){
-                System.out.println(tipoObjeto[x]);
+    public static void consultarTipos(String[] vetor)
+    {
+        
+        for (int x=0; x<vetor.length; x++)
+        {
+                System.out.println(vetor[x]);
         }
     }
 }
