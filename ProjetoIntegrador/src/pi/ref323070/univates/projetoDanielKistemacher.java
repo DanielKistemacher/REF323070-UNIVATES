@@ -6,9 +6,6 @@ public class projetoDanielKistemacher
 {
     public static void main(String[] args) 
     {
-        
-        String objetos[] = new String[999];
-        
         menuPrincipal();        
     }
     
