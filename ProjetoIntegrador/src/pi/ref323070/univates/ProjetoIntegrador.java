@@ -1,5 +1,6 @@
 package pi.ref323070.univates;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ProjetoIntegrador {
@@ -189,11 +190,32 @@ public class ProjetoIntegrador {
     
     public static void incluirPessoa()
     {
+        int cpf;
+        String nome;
+        char continua;
+        
         Scanner input = new Scanner(System.in);
+        ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
         
+        do
+        {
+            System.out.println("===== INCLUSÃO DE PESSOA =====");
+            System.out.print("Digite o CPF: ");
+            cpf = input.nextInt();
+            System.out.print("Digite o Nome: ");
+            nome = input.next().toUpperCase();
+            Pessoa p = new Pessoa(cpf, nome);
+            pessoas.add(p);
+            
+            System.out.println("Cadastro realizado com sucesso !");            
+            System.out.println("Deseja continuar cadastrando pessoas ? S/N");
+            continua = input.next().charAt(0);
+        } while (continua == 's' || continua == 'S');
         
-        
-        
+        for (Pessoa i: pessoas)
+        {
+            System.out.println(i);
+        }
     }
     
     public static void incluirTipoObjeto()
