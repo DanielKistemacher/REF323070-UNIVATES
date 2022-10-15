@@ -212,8 +212,7 @@ public class ProjetoIntegrador {
             continua = input.next().charAt(0);
         } while (continua == 's' || continua == 'S');
         
-        for (Pessoa i: pessoas)
-        {
+        for (Pessoa i: pessoas){
             System.out.println(i);
         }
     }
