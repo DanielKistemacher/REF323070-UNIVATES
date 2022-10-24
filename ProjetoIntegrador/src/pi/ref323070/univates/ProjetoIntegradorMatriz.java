@@ -2,7 +2,7 @@ package pi.ref323070.univates;
 
 import java.util.Scanner;
 
-public class ProjetoIntegrador {
+public class ProjetoIntegradorMatriz {
 
     public static void main(String[] args) {
         menuPrincipal();
@@ -219,8 +219,49 @@ public class ProjetoIntegrador {
         }
     }
 
-    public static void incluirPessoa() {
-        System.out.println("Não implementado.");
+    public static void incluirPessoa() 
+    {
+        
+        Scanner input = new Scanner(System.in);
+        boolean cadastrar = true;
+        int cpf, opcao;
+        String nome;
+        
+        int vetorCpf[] = new int[1];
+        String vetorNome[] = new String[1];
+        
+        do 
+        {
+            for (int x=0; x<vetorCpf.length; x++)
+            {
+                for (int y=0; y<vetorNome.length; y++)
+                {
+                    System.out.println("Digite o CPF: ");
+                    vetorCpf[x] = input.nextInt();
+
+                    System.out.println("Digite o nome: ");
+                    vetorNome[y] = input.next();
+                    
+                    System.out.println("CPF: " + vetorCpf[x]);
+                    System.out.println("Nome: " + vetorNome[y]);
+                    
+                    
+                    System.out.println("Cliente cadastrado com sucesso!");
+                    System.out.println("");
+                    System.out.println("Deseja cadastrar uma nova pessoa ?");
+                    System.out.println("Digite 1 para 'SIM' e 2 para 'Não': ");
+                    opcao = input.nextInt();
+
+                    if (opcao == 1){
+                        cadastrar = true;
+                    }
+
+                    if (opcao==2){
+                        cadastrar = false;
+                    }
+                }
+            }
+        } while (cadastrar == true);
     }
 
     public static void incluirTipoObjeto() {
@@ -232,7 +273,8 @@ public class ProjetoIntegrador {
     }
 
     public static void consultarPessoa() {
-        System.out.println("Não implementado.");
+        System.out.println("CPF: ");
+        
     }
 
     public static void consultarTipoObjeto() {
