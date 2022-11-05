@@ -3,12 +3,56 @@ package pi.ref323070.univates;
 import java.util.Scanner;
 
 public class ProjetoIntegradorMatriz {
+    static String pessoas[][] = new String[3][2];
+    static String[] tiposObjeto = new String[3];
 
     public static void main(String[] args) {
+        inicializaCadastros();
         menuPrincipal();
+    }
+    
+    static void inicializaCadastros(){
+        //inicializa Pessoas
+        for(int x=0; x<3; x++){
+            for (int y=0; y<2; y++){
+                pessoas[x][y] = "";
+            }
+        }
+        
+        //inicializa Tipos de Objetos
+        for(int x=0; x<3; x++){
+            tiposObjeto[x] = "";
+        }
+    }
+    
+    static int espacoLivreVetor(String vetor[]){ // recebe um vetor como parametro
+        int i = 0;
+        int x = -1; //previamente setada para -1 que vai significar que nao ha mais espaco
+        while (i < vetor.length) {//percorre o vetor em busca de um espaco vazio
+            if (vetor[i] == "") {  //quando encontra, atribui o indice a X e X deixa de ser -1
+                x = i;
+                i = vetor.length; //atribui o tamanho maximo a i para sair do laco de repeticao
+            }
+            i++; // incrementa i se ainda n�o encontrou espaco vazio
+        }
+        return x;  //retorna o valor de X (que e a posicao no vetor)    
+    }
+    
+    static int espacoLivreMatriz(String matriz[][]){
+        int i = 0;
+        int x = -1;
+        while (i < matriz.length) {
+            if (matriz[i][0] == "") {
+                x = i;
+                i = matriz.length;
+            }
+            i++;
+        }
+        return x;
     }
 
     public static void menuPrincipal() {
+        
         Scanner menuPrincipal = new Scanner(System.in);
         int opcaoEscolhida;
 
@@ -20,7 +64,7 @@ public class ProjetoIntegradorMatriz {
         System.out.println("5. Cadastrar empréstimo");
         System.out.println("6. Cadastrar manutenção");
         System.out.println("7. Sair");
-        System.out.println("Digite o número da opção: ");
+        System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = menuPrincipal.nextInt();
 
@@ -38,12 +82,12 @@ public class ProjetoIntegradorMatriz {
                 menuExcluir();
                 break;
             case 5:
-                cadastrarEmprestimo();
+                // cadastrarEmprestimo();
                 break;
             case 6:
-                cadastrarManutencao();
+                // cadastrarManutencao();
                 break;
-            case 7:
+            case 7: System.exit(0);
                 break;
             default:
                 System.out.println("Opção inválida!");
@@ -52,46 +96,57 @@ public class ProjetoIntegradorMatriz {
     }
 
     public static void menuIncluir() {
-        int opcaoEscolhida;
+        int opcaoEscolhida = 0;
+        int linha;
 
-        Scanner menuIncluir = new Scanner(System.in);
+        Scanner input = new Scanner(System.in);
+        
+        while (opcaoEscolhida != 5){
+            System.out.println("===== MENU INCLUIR =====");
+            System.out.println("1. Incluir pessoa");
+            System.out.println("2. Incluir tipos de objeto");
+            System.out.println("3. Incluir objeto");
+            System.out.println("4. Voltar ao menu principal");
+            System.out.println("5. Sair");
+            System.out.print("Digite o número da opção: ");
 
-        System.out.println("===== MENU INCLUIR =====");
-        System.out.println("1. Incluir pessoa");
-        System.out.println("2. Incluir tipos de objeto");
-        System.out.println("3. Incluir objeto");
-        System.out.println("4. Voltar ao menu principal");
-        System.out.println("5. Sair");
-        System.out.println("Digite o número da opção: ");
+            opcaoEscolhida = input.nextInt();
 
-        opcaoEscolhida = menuIncluir.nextInt();
+            switch (opcaoEscolhida) {
+                case 1:
+                    linha = espacoLivreMatriz(pessoas);
+                    if (linha == -1) { //se a posicao retornada for -1 e porque nao ha mais espaco
+                        System.out.println("Não há espaços para novos cadastros!");
+                    } else {
+                        input.nextLine();
+                        System.out.print("Informe o CPF: ");
+                        pessoas[linha][0] = input.nextLine().toUpperCase();
+                        System.out.print("Informe o nome: ");
+                        pessoas[linha][1] = input.nextLine().toUpperCase();
 
-        switch (opcaoEscolhida) {
-            case 1:
-                incluirPessoa();
-                break;
-            case 2:
-                incluirTipoObjeto();
-                break;
-            case 3:
-                incluirObjeto();
-                break;
-            case 4:
-                menuPrincipal();
-                break;
-            case 5:
-                break;
-            default:
-                System.out.println("Opção inválida!");
-                menuIncluir();
+                        System.out.println("Cliente cadastrado com sucesso! \n");
+                        break;
+                    }
+                case 2:
+                    // incluirTipoObjeto();
+                    break;
+                case 3:
+                    // incluirObjeto();
+                    break;
+                case 4: menuPrincipal();
+                    break;
+                case 5: System.exit(0);
+                    break;
+                default:
+                    System.out.println("Opção inválida!");
+                    menuIncluir();
+            }
         }
     }
 
     public static void menuConsultar() {
-        int opcaoEscolhida;
-
-        Scanner menuConsultar = new Scanner(System.in);
-
+        Scanner input = new Scanner(System.in);
+        
         System.out.println("===== MENU CONSULTAR =====");
         System.out.println("1. Consultar pessoas");
         System.out.println("2. Consultar tipos de objetos");
@@ -99,34 +154,34 @@ public class ProjetoIntegradorMatriz {
         System.out.println("4. Consultar empréstimos");
         System.out.println("5. Consultar manutenções");
         System.out.println("6. Voltar ao menu principal");
-        System.out.println("7. Sair");
         System.out.println("Digite o número da opção: ");
 
-        opcaoEscolhida = menuConsultar.nextInt();
+        int opcaoEscolhida = input.nextInt();
 
         switch (opcaoEscolhida) {
-            case 1:
-                consultarPessoa();
+            case 1: 
+                for (int x=0; x<3; x++){
+                    System.out.println("CPF: " + pessoas[x][0]);
+                    System.out.println("Nome: " + pessoas[x][1]);
+                    System.out.println("==============");
+                }
+                menuConsultar();
                 break;
             case 2:
-                consultarTipoObjeto();
-                break;
+                    // consultarTipoObjeto();
+                    break;
             case 3:
-                consultarObjeto();
-                break;
+                    // consultarObjeto();
+                    break;
             case 4:
-                consultarEmprestimo();
-                break;
+                    // consultarEmprestimo();
+                    break;
             case 5:
-                consultarManutencao();
-                break;
-            case 6:
-                menuPrincipal();
-                break;
-            case 7:
-                break;
-            default:
-                System.out.println("Opção inválida!");
+                    // consultarManutencao();
+                    break;
+            case 6: menuPrincipal();
+                    break;
+            default: System.out.println("Opção inválida!");
                 menuConsultar();
         }
     }
@@ -150,19 +205,19 @@ public class ProjetoIntegradorMatriz {
 
         switch (opcaoEscolhida) {
             case 1:
-                excluirPessoa();
+                //  excluirPessoa();
                 break;
             case 2:
-                excluirTipoObjeto();
+                //  excluirTipoObjeto();
                 break;
             case 3:
-                excluirObjeto();
+                //  excluirObjeto();
                 break;
             case 4:
-                excluirEmprestimo();
+                //  excluirEmprestimo();
                 break;
             case 5:
-                excluirManutencao();
+                // excluirManutencao();
                 break;
             case 6:
                 menuPrincipal();
@@ -194,19 +249,19 @@ public class ProjetoIntegradorMatriz {
 
         switch (opcaoEscolhida) {
             case 1:
-                editarPessoa();
+                // editarPessoa();
                 break;
             case 2:
-                editarTipoObjeto();
+                // editarTipoObjeto();
                 break;
             case 3:
-                editarObjeto();
+                // editarObjeto();
                 break;
             case 4:
-                editarEmprestimo();
+                // editarEmprestimo();
                 break;
             case 5:
-                editarManutencao();
+                // editarManutencao();
                 break;
             case 6:
                 menuPrincipal();
@@ -217,127 +272,5 @@ public class ProjetoIntegradorMatriz {
                 System.out.println("Opção inválida!");
                 menuEditar();
         }
-    }
-
-    public static void incluirPessoa() 
-    {
-        
-        Scanner input = new Scanner(System.in);
-        boolean cadastrar = true;
-        int cpf, opcao;
-        String nome;
-        
-        int vetorCpf[] = new int[1];
-        String vetorNome[] = new String[1];
-        
-        do 
-        {
-            for (int x=0; x<vetorCpf.length; x++)
-            {
-                for (int y=0; y<vetorNome.length; y++)
-                {
-                    System.out.println("Digite o CPF: ");
-                    vetorCpf[x] = input.nextInt();
-
-                    System.out.println("Digite o nome: ");
-                    vetorNome[y] = input.next();
-                    
-                    System.out.println("CPF: " + vetorCpf[x]);
-                    System.out.println("Nome: " + vetorNome[y]);
-                    
-                    
-                    System.out.println("Cliente cadastrado com sucesso!");
-                    System.out.println("");
-                    System.out.println("Deseja cadastrar uma nova pessoa ?");
-                    System.out.println("Digite 1 para 'SIM' e 2 para 'Não': ");
-                    opcao = input.nextInt();
-
-                    if (opcao == 1){
-                        cadastrar = true;
-                    }
-
-                    if (opcao==2){
-                        cadastrar = false;
-                    }
-                }
-            }
-        } while (cadastrar == true);
-    }
-
-    public static void incluirTipoObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void incluirObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void consultarPessoa() {
-        System.out.println("CPF: ");
-        
-    }
-
-    public static void consultarTipoObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void consultarObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void consultarManutencao() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void consultarEmprestimo() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void excluirPessoa() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void excluirTipoObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void excluirObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void excluirManutencao() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void excluirEmprestimo() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void editarPessoa() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void editarTipoObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void editarObjeto() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void editarManutencao() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void editarEmprestimo() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void cadastrarEmprestimo() {
-        System.out.println("Não implementado.");
-    }
-
-    public static void cadastrarManutencao() {
-        System.out.println("Não implementado.");
     }
 }
