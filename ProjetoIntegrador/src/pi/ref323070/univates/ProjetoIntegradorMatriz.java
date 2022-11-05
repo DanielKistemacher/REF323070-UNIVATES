@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ProjetoIntegradorMatriz {
     static String pessoas[][] = new String[3][2];
-    static String[] tiposObjeto = new String[3];
+    static String tiposObjeto[] = new String[3];
 
     public static void main(String[] args) {
         inicializaCadastros();
@@ -18,10 +18,9 @@ public class ProjetoIntegradorMatriz {
                 pessoas[x][y] = "";
             }
         }
-        
         //inicializa Tipos de Objetos
         for(int x=0; x<3; x++){
-            tiposObjeto[x] = "";
+                tiposObjeto[x] = "";
         }
     }
     
@@ -56,7 +55,7 @@ public class ProjetoIntegradorMatriz {
         Scanner menuPrincipal = new Scanner(System.in);
         int opcaoEscolhida;
 
-        System.out.println("SISTEMA DE EMPRÉSTIMO DE OBJETOS");
+        System.out.println("\n SISTEMA DE EMPRÉSTIMO DE OBJETOS");
         System.out.println("1. Incluir");
         System.out.println("2. Consultar");
         System.out.println("3. Editar");
@@ -102,7 +101,7 @@ public class ProjetoIntegradorMatriz {
         Scanner input = new Scanner(System.in);
         
         while (opcaoEscolhida != 5){
-            System.out.println("===== MENU INCLUIR =====");
+            System.out.println("\n ===== MENU INCLUIR =====");
             System.out.println("1. Incluir pessoa");
             System.out.println("2. Incluir tipos de objeto");
             System.out.println("3. Incluir objeto");
@@ -116,7 +115,7 @@ public class ProjetoIntegradorMatriz {
                 case 1:
                     linha = espacoLivreMatriz(pessoas);
                     if (linha == -1) { //se a posicao retornada for -1 e porque nao ha mais espaco
-                        System.out.println("Não há espaços para novos cadastros!");
+                        System.out.println("Não há espaços para novos cadastros! \n");
                     } else {
                         input.nextLine();
                         System.out.print("Informe o CPF: ");
@@ -128,7 +127,17 @@ public class ProjetoIntegradorMatriz {
                         break;
                     }
                 case 2:
-                    // incluirTipoObjeto();
+                    linha = espacoLivreVetor(tiposObjeto);
+                    if (linha == -1) { //se a posicao retornada for -1 e porque nao ha mais espaco
+                        System.out.println("Não há espaços para novos cadastros! \n");
+                    } else {
+                        input.nextLine();
+                        System.out.print("Descrição do tipo de objeto: ");
+                        tiposObjeto[linha] = input.nextLine().toUpperCase();
+
+                        System.out.println("Tipo de objeto cadastrado com sucesso! \n");
+                        
+                    }
                     break;
                 case 3:
                     // incluirObjeto();
@@ -147,14 +156,14 @@ public class ProjetoIntegradorMatriz {
     public static void menuConsultar() {
         Scanner input = new Scanner(System.in);
         
-        System.out.println("===== MENU CONSULTAR =====");
+        System.out.println("\n ===== MENU CONSULTAR =====");
         System.out.println("1. Consultar pessoas");
         System.out.println("2. Consultar tipos de objetos");
         System.out.println("3. Consultar objetos");
         System.out.println("4. Consultar empréstimos");
         System.out.println("5. Consultar manutenções");
         System.out.println("6. Voltar ao menu principal");
-        System.out.println("Digite o número da opção: ");
+        System.out.print("Digite o número da opção: ");
 
         int opcaoEscolhida = input.nextInt();
 
@@ -168,7 +177,12 @@ public class ProjetoIntegradorMatriz {
                 menuConsultar();
                 break;
             case 2:
-                    // consultarTipoObjeto();
+                    for (int x=0; x<3; x++){
+                    System.out.println("Código: " + x);
+                    System.out.println("Tipo de objeto: " + tiposObjeto[x]);
+                    System.out.println("==============");
+                }
+                menuConsultar();
                     break;
             case 3:
                     // consultarObjeto();
