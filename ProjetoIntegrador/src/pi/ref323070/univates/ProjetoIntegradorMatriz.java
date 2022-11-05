@@ -5,6 +5,7 @@ import java.util.Scanner;
 public class ProjetoIntegradorMatriz {
     static String pessoas[][] = new String[3][2];
     static String tiposObjeto[] = new String[3];
+    static String objetos[][] = new String[3][3];
 
     public static void main(String[] args) {
         inicializaCadastros();
@@ -21,6 +22,12 @@ public class ProjetoIntegradorMatriz {
         //inicializa Tipos de Objetos
         for(int x=0; x<3; x++){
                 tiposObjeto[x] = "";
+        }
+        //inicializa Objetos
+        for(int x=0; x<3; x++){
+            for (int y=0; y<3; y++){
+                objetos[x][y] = "";
+            }
         }
     }
     
@@ -163,6 +170,7 @@ public class ProjetoIntegradorMatriz {
         System.out.println("4. Consultar empréstimos");
         System.out.println("5. Consultar manutenções");
         System.out.println("6. Voltar ao menu principal");
+        System.out.println("7. Sair");
         System.out.print("Digite o número da opção: ");
 
         int opcaoEscolhida = input.nextInt();
@@ -184,8 +192,15 @@ public class ProjetoIntegradorMatriz {
                 }
                 menuConsultar();
                     break;
-            case 3:
-                    // consultarObjeto();
+            case 3: 
+                for (int x=0; x<3; x++){
+                    System.out.println("Código: " + x);
+                    System.out.println("Nome: " + objetos[x][0]);
+                    System.out.println("Tipo de objeto: " + objetos[x][1]);
+                    System.out.println("Situação: " + objetos[x][2]);
+                    System.out.println("==============");
+                }
+                menuConsultar();
                     break;
             case 4:
                     // consultarEmprestimo();
@@ -194,6 +209,8 @@ public class ProjetoIntegradorMatriz {
                     // consultarManutencao();
                     break;
             case 6: menuPrincipal();
+                    break;
+            case 7: System.exit(0);
                     break;
             default: System.out.println("Opção inválida!");
                 menuConsultar();
