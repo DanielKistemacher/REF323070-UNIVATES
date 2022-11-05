@@ -69,7 +69,8 @@ public class ProjetoIntegradorMatriz {
         Scanner input = new Scanner(System.in);
         int opcaoEscolhida, linha;
 
-        System.out.println("\n SISTEMA DE EMPRÉSTIMO DE OBJETOS");
+        System.out.println("\n===== SISTEMA DE EMPRÉSTIMO DE OBJETOS =====");
+        System.out.println("============== MENU PRINCIPAL ==============");
         System.out.println("1. Incluir");
         System.out.println("2. Consultar");
         System.out.println("3. Editar");
@@ -262,7 +263,7 @@ public class ProjetoIntegradorMatriz {
 
         Scanner menuExcluir = new Scanner(System.in);
 
-        System.out.println("===== MENU EXCLUIR =====");
+        System.out.println("\n===== MENU EXCLUIR =====");
         System.out.println("1. Excluir Pessoas");
         System.out.println("2. Excluir tipos de objetos");
         System.out.println("3. Excluir objetos");
@@ -270,7 +271,7 @@ public class ProjetoIntegradorMatriz {
         System.out.println("5. Excluir empréstimos");
         System.out.println("6. Voltar ao menu principal");
         System.out.println("7. Sair");
-        System.out.println("Digite o número da opção: ");
+        System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = menuExcluir.nextInt();
 
@@ -306,7 +307,7 @@ public class ProjetoIntegradorMatriz {
 
         Scanner menuEditar = new Scanner(System.in);
 
-        System.out.println("===== MENU EDITAR =====");
+        System.out.println("\n===== MENU EDITAR =====");
         System.out.println("1. Editar pessoas");
         System.out.println("2. Editar tipos de objetos");
         System.out.println("3. Editar objetos");
@@ -314,7 +315,7 @@ public class ProjetoIntegradorMatriz {
         System.out.println("5. Editar manutenções");
         System.out.println("6. Voltar ao menu principal");
         System.out.println("7. Sair");
-        System.out.println("Digite o número da opção: ");
+        System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = menuEditar.nextInt();
 
