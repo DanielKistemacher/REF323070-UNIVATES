@@ -146,6 +146,7 @@ public class ProjetoTeste {
 
                         System.out.println("Cliente cadastrado com sucesso! \n");
                     }
+                    menuPrincipal();
                     break;
                 case 2:
                     linha = espacoLivreVetor(tiposObjeto);
@@ -159,6 +160,7 @@ public class ProjetoTeste {
                         System.out.println("Tipo de objeto cadastrado com sucesso! \n");
 
                     }
+                    menuPrincipal();
                     break;
                 case 3:
                     linha = espacoLivreMatriz(objetos);
@@ -175,6 +177,7 @@ public class ProjetoTeste {
 
                         System.out.println("Objeto cadastrado com sucesso! \n");
                     }
+                    menuPrincipal();
                     break;
                 case 4: menuPrincipal();
                     break;
