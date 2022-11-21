@@ -10,9 +10,7 @@ public class projetoDanielKistemacher_editado {
     static String objetos[][] = new String[3][3];
     static String manutObjetos[][] = new String[3][3];
     static String empObjetos[][] = new String[3][3];
-    static String objetosEmManutencao[] = new String[3];
-        
-
+    
     public static void main(String[] args) {
         inicializaCadastros();
         menuPrincipal();
@@ -28,10 +26,6 @@ public class projetoDanielKistemacher_editado {
         //inicializa Tipos de Objetos
         for (int x = 0; x < 3; x++) {
             tiposObjeto[x] = "";
-        }
-        //inicializa Objetos em Manutenção
-        for (int x = 0; x < 3; x++) {
-            objetosEmManutencao[x] = "";
         }
         //inicializa Objetos
         for (int x = 0; x < 3; x++) {
@@ -191,8 +185,10 @@ public class projetoDanielKistemacher_editado {
                         input.nextLine();
                         System.out.print("Nome do objeto: ");
                         objetos[linha][0] = input.nextLine().toUpperCase();
-                        System.out.print("Tipo de objeto: ");
-                        objetos[linha][1] = input.nextLine().toUpperCase();
+                        consultarTiposObjetos();
+                        System.out.print("Informe o código do tipo de objeto: ");
+                        int opcao = input.nextInt();
+                        objetos[linha][1] = tiposObjeto[opcao];
                         objetos[linha][2] = "DISPONIVEL";                        
                         
                         System.out.println("Objeto cadastrado com sucesso! \n");
@@ -229,9 +225,14 @@ public class projetoDanielKistemacher_editado {
                     consultarObjetos();
                     System.out.print("Informe o código do objeto a ser baixado: ");
                     int opcao = input.nextInt();
-                    objetos[opcao][2] = "BAIXADO";
-                    System.out.println("Objeto baixado com sucesso!");
-                    menuPrincipal();
+                    
+                    if (objetos[opcao][2] == "DISPONIVEL"){
+                        objetos[opcao][2] = "BAIXADO";
+                        System.out.println("Objeto baixado com sucesso!");
+                        menuPrincipal();
+                    } else {
+                        System.out.println("Este objeto está em manutenção ou emprestado, portanto não pode ser baixado!");
+                    }
                     break;
                 case 6: menuPrincipal();
                     break;
@@ -512,31 +513,71 @@ public class projetoDanielKistemacher_editado {
     }
     
     public static void consultarObjetosSituacao(){
-        for (int x=0; x<objetos.length; x++){
-            if (objetos[x][2] == "DISPONIVEL"){
-              System.out.println("===== OBJETOS DISPONÍVEIS =====");
-              System.out.println("Nome: " + objetos[x][0]);
-              System.out.println("Tipo de objeto: " + objetos[x][1]);
-              System.out.println("==============");  
-            }
-            if (objetos[x][2] == "EMPRESTADO"){
-              System.out.println("\n===== OBJETOS EMPRESTADOS =====");
-              System.out.println("Nome: " + objetos[x][0]);
-              System.out.println("Tipo de objeto: " + objetos[x][1]);
-              System.out.println("==============");  
-            }
-            if (objetos[x][2] == "BAIXADO"){
-              System.out.println("\n===== OBJETOS BAIXADOS =====");  
-              System.out.println("Nome: " + objetos[x][0]);
-              System.out.println("Tipo de objeto: " + objetos[x][1]);
-              System.out.println("==============");  
-            }
-            if (objetos[x][2] == "EM MANUTENCAO"){
-              System.out.println("\n===== OBJETOS EM MANUTENCAO =====");  
-              System.out.println("Nome: " + objetos[x][0]);
-              System.out.println("Tipo de objeto: " + objetos[x][1]);
-              System.out.println("==============");  
+        Scanner input = new Scanner(System.in);
+        
+        System.out.println("Deseja consultar pelo tipo de objeto? (1=SIM / 2=NÂO)");
+        int opcao = input.nextInt();
+        if (opcao == 1){
+            consultarTiposObjetos();
+            System.out.print("Informe o código do tipo de objeto que deseja consultar: ");
+            int opcaoTipo = input.nextInt();
+            for (int x=0; x<tiposObjeto.length; x++){
+                if (objetos[x][1] == tiposObjeto[opcaoTipo]){
+                    if (objetos[x][2] == "DISPONIVEL"){
+                        System.out.println("===== OBJETOS DISPONÍVEIS =====");
+                        System.out.println("Nome: " + objetos[x][0]);
+                        System.out.println("Tipo de objeto: " + objetos[x][1]);
+                        System.out.println("==============");  
+                    }
+                    if (objetos[x][2] == "EMPRESTADO"){
+                        System.out.println("\n===== OBJETOS EMPRESTADOS =====");
+                        System.out.println("Nome: " + objetos[x][0]);
+                        System.out.println("Tipo de objeto: " + objetos[x][1]);
+                        System.out.println("==============");  
+                    }
+                    if (objetos[x][2] == "BAIXADO"){
+                        System.out.println("\n===== OBJETOS BAIXADOS =====");  
+                        System.out.println("Nome: " + objetos[x][0]);
+                        System.out.println("Tipo de objeto: " + objetos[x][1]);
+                        System.out.println("==============");  
+                    }
+                    if (objetos[x][2] == "EM MANUTENCAO"){
+                        System.out.println("\n===== OBJETOS EM MANUTENCAO =====");  
+                        System.out.println("Nome: " + objetos[x][0]);
+                        System.out.println("Tipo de objeto: " + objetos[x][1]);
+                        System.out.println("==============");  
+                    }
+                }
             }
         }
+        
+        if (opcao == 2){
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][2] == "DISPONIVEL"){
+                  System.out.println("===== OBJETOS DISPONÍVEIS =====");
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                  System.out.println("==============");  
+                }
+                if (objetos[x][2] == "EMPRESTADO"){
+                  System.out.println("\n===== OBJETOS EMPRESTADOS =====");
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                  System.out.println("==============");  
+                }
+                if (objetos[x][2] == "BAIXADO"){
+                  System.out.println("\n===== OBJETOS BAIXADOS =====");  
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                  System.out.println("==============");  
+                }
+                if (objetos[x][2] == "EM MANUTENCAO"){
+                  System.out.println("\n===== OBJETOS EM MANUTENCAO =====");  
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                  System.out.println("==============");  
+                }
+            }
+        }    
     }
 }
