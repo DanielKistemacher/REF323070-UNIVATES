@@ -8,7 +8,7 @@ public class projetoDanielKistemacher_editado {
     static String pessoas[][] = new String[3][2];
     static String tiposObjeto[] = new String[3];
     static String objetos[][] = new String[5][5];
-    static String manutObjetos[][] = new String[3][3];
+    static String manutObjetos[][] = new String[3][4];
     static String empObjetos[][] = new String[3][4];
     
     public static void main(String[] args) {
@@ -34,8 +34,8 @@ public class projetoDanielKistemacher_editado {
             }
         }
         //inicializa Manutenção de Objetos
-        for (int x = 0; x < manutObjetos.length; x++) {
-            for (int y = 0; y < 3; y++) {
+        for (int x = 0; x < 3; x++) {
+            for (int y = 0; y < 4; y++) {
                 manutObjetos[x][y] = "";
             }
         }
@@ -83,7 +83,8 @@ public class projetoDanielKistemacher_editado {
         System.out.println("3. Editar");
         System.out.println("4. Excluir");
         System.out.println("5. Cadastrar manutenção");
-        System.out.println("6. Sair");
+        System.out.println("6. Encerrar manutenção");
+        System.out.println("7. Sair");
         System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = input.nextInt();
@@ -114,6 +115,7 @@ public class projetoDanielKistemacher_editado {
                         manutObjetos[linha][1] = input.nextLine().toUpperCase();
                         System.out.print("Status (Recebido / Serviço / Resolvido): ");
                         manutObjetos[linha][2] = input.nextLine().toUpperCase();
+                        manutObjetos[linha][3] = "EM ABERTO";
                         System.out.println("Manutenção cadastrada com sucesso! \n");
                         
                         objetos[opcao][2] = "EM MANUTENCAO";
@@ -123,7 +125,18 @@ public class projetoDanielKistemacher_editado {
                 }
                 menuPrincipal();
                 break;
-            case 6: System.exit(0);
+            case 6: 
+                consultarManutencoes();
+                System.out.print("Informe o código da manutenção que deseja devolver: ");
+                int codigoManut = input.nextInt();
+                consultarObjetos();
+                System.out.print("Informe o código do objeto: ");
+                int codigoObjeto = input.nextInt();
+                objetos[codigoObjeto][2] = "DISPONIVEL";
+                empObjetos[codigoManut][3] = "ENCERRADA";
+                menuPrincipal();
+                break;
+            case 7: System.exit(0);
                 break;
             default: System.out.println("Opção inválida!");
                 menuPrincipal();
@@ -141,7 +154,7 @@ public class projetoDanielKistemacher_editado {
             System.out.println("2. Incluir tipos de objeto");
             System.out.println("3. Incluir objeto");
             System.out.println("4. Incluir empréstimo");
-            System.out.println("5. Devolver empréstimo");
+            System.out.println("5. Incluir devolução de empréstimo");
             System.out.println("6. Incluir baixa de objeto");
             System.out.println("7. Voltar ao menu principal");
             System.out.println("8. Sair");
