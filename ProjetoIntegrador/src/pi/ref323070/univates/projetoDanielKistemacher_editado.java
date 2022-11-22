@@ -9,7 +9,7 @@ public class projetoDanielKistemacher_editado {
     static String tiposObjeto[] = new String[3];
     static String objetos[][] = new String[5][3];
     static String manutObjetos[][] = new String[3][4];
-    static String empObjetos[][] = new String[3][4];
+    static String empObjetos[][] = new String[3][3];
     
     public static void main(String[] args) {
         inicializaCadastros();
@@ -29,7 +29,7 @@ public class projetoDanielKistemacher_editado {
         }
         //inicializa Objetos
         for (int x = 0; x < objetos.length; x++) {
-            for (int y = 0; y < objetos.length; y++) {
+            for (int y = 0; y < 3; y++) {
                 objetos[x][y] = "";
             }
         }
@@ -41,7 +41,7 @@ public class projetoDanielKistemacher_editado {
         }
         //inicializa Empréstimos de Objetos
         for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 4; y++) {
+            for (int y = 0; y < 3; y++) {
                 empObjetos[x][y] = "";
             }
         }
@@ -108,18 +108,14 @@ public class projetoDanielKistemacher_editado {
                     input.nextLine();
                     System.out.print("Informe o código do objeto a ser reparado: ");
                     int opcao = input.nextInt();
-                    
                     if (objetos[opcao][2] == "DISPONIVEL" ){
                         manutObjetos[linha][0] = objetos[opcao][0];
+                        objetos[opcao][2] = "EM MANUTENCAO";
                         input.nextLine();
                         System.out.print("Descrição da manut.: ");
                         manutObjetos[linha][1] = input.nextLine().toUpperCase();
-                        System.out.print("Status (Recebido / Serviço / Resolvido): ");
-                        manutObjetos[linha][2] = input.nextLine().toUpperCase();
-                        manutObjetos[linha][3] = "EM ABERTO";
+                        manutObjetos[linha][2] = "EM ABERTO";
                         System.out.println("Manutenção cadastrada com sucesso! \n");
-                        
-                        objetos[opcao][2] = "EM MANUTENCAO";
                     } else {
                         System.out.println("Objeto indisponível para manutenção!");
                     }
@@ -128,14 +124,15 @@ public class projetoDanielKistemacher_editado {
                 break;
             case 6: 
                 consultarManutencoes();
-                System.out.print("Informe o código da manutenção que deseja devolver: ");
+                System.out.print("Informe o código da manutenção que deseja encerrar: ");
                 int codigoManut = input.nextInt();
+                empObjetos[codigoManut][2] = "ENCERRADA";
                 consultarObjetos();
                 System.out.print("Informe o código do objeto: ");
                 int codigoObjeto = input.nextInt();
                 objetos[codigoObjeto][2] = "DISPONIVEL";
-                empObjetos[codigoManut][3] = "ENCERRADA";
                 menuPrincipal();
+                System.out.println("Manutenção encerrada com sucesso!\n");
                 break;
             case 7: System.exit(0);
                 break;
@@ -529,7 +526,7 @@ public class projetoDanielKistemacher_editado {
             System.out.println(" Código: " + x);
             System.out.println(" Nome objeto: " + manutObjetos[x][0]);
             System.out.println(" Descrição da manut.: " + manutObjetos[x][1]);
-            System.out.println(" Status: " + manutObjetos[x][2]);
+            System.out.println(" Situação: " + manutObjetos[x][2]);
             System.out.println("--------------------");
         }
     }
