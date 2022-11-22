@@ -7,9 +7,9 @@ import java.util.Scanner;
 public class projetoDanielKistemacher_editado {
     static String pessoas[][] = new String[3][2];
     static String tiposObjeto[] = new String[3];
-    static String objetos[][] = new String[5][3];
+    static String objetos[][] = new String[5][5];
     static String manutObjetos[][] = new String[3][4];
-    static String empObjetos[][] = new String[3][3];
+    static String empObjetos[][] = new String[3][4];
     
     public static void main(String[] args) {
         inicializaCadastros();
@@ -29,7 +29,7 @@ public class projetoDanielKistemacher_editado {
         }
         //inicializa Objetos
         for (int x = 0; x < objetos.length; x++) {
-            for (int y = 0; y < 3; y++) {
+            for (int y = 0; y < 5; y++) {
                 objetos[x][y] = "";
             }
         }
@@ -41,7 +41,7 @@ public class projetoDanielKistemacher_editado {
         }
         //inicializa Empréstimos de Objetos
         for (int x = 0; x < 3; x++) {
-            for (int y = 0; y < 3; y++) {
+            for (int y = 0; y < 4; y++) {
                 empObjetos[x][y] = "";
             }
         }
@@ -76,15 +76,15 @@ public class projetoDanielKistemacher_editado {
     public static void menuPrincipal() {
         Scanner input = new Scanner(System.in);
         int opcaoEscolhida, linha;
-        System.out.println(" ______________ MENU PRINCIPAL ___________ ");
+        System.out.println(" ____________ MENU PRINCIPAL _____________ ");
         System.out.println("|                                         |");
-        System.out.println("|              1. Incluir                 |");
-        System.out.println("|              2. Consultar               |");
-        System.out.println("|              3. Editar                  |");
-        System.out.println("|              4. Excluir                 |");
-        System.out.println("|              5. Cadastrar manutenção    |");
-        System.out.println("|              6. Encerrar manutenção     |");
-        System.out.println("|              7. Sair                    |");
+        System.out.println("|             1. Incluir                  |");
+        System.out.println("|             2. Consultar                |");
+        System.out.println("|             3. Editar                   |");
+        System.out.println("|             4. Excluir                  |");
+        System.out.println("|             5. Cadastrar manutenção     |");
+        System.out.println("|             6. Encerrar manutenção      |");
+        System.out.println("|             7. Sair                     |");
         System.out.println("|_________________________________________|");
         System.out.print("Digite o número da opção: ");
 
@@ -229,8 +229,6 @@ public class projetoDanielKistemacher_editado {
                             empObjetos[linha][2] = pessoas[codigoFunc2][1];
                             empObjetos[linha][3] = "EM ABERTO";
                             System.out.println("Empréstimo cadastrado com sucesso! \n");
-                            
-                            
                             objetos[opcao][2] = "EMPRESTADO";
                         } else {
                             System.out.println("Este objeto não está disponível, portanto não pode ser emprestado! \n");
