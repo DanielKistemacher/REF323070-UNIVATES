@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class projetoDanielKistemacher_editado {
     static String pessoas[][] = new String[3][2];
     static String tiposObjeto[] = new String[3];
-    static String objetos[][] = new String[5][5];
+    static String objetos[][] = new String[5][3];
     static String manutObjetos[][] = new String[3][4];
     static String empObjetos[][] = new String[3][4];
     
@@ -76,15 +76,16 @@ public class projetoDanielKistemacher_editado {
     public static void menuPrincipal() {
         Scanner input = new Scanner(System.in);
         int opcaoEscolhida, linha;
-        System.out.println("\n===== SISTEMA DE EMPRÉSTIMO DE OBJETOS - VERSÃO DEMO =====");
-        System.out.println("============== MENU PRINCIPAL ==============");
-        System.out.println("1. Incluir");
-        System.out.println("2. Consultar");
-        System.out.println("3. Editar");
-        System.out.println("4. Excluir");
-        System.out.println("5. Cadastrar manutenção");
-        System.out.println("6. Encerrar manutenção");
-        System.out.println("7. Sair");
+        System.out.println(" ______________ MENU PRINCIPAL ___________ ");
+        System.out.println("|                                         |");
+        System.out.println("|              1. Incluir                 |");
+        System.out.println("|              2. Consultar               |");
+        System.out.println("|              3. Editar                  |");
+        System.out.println("|              4. Excluir                 |");
+        System.out.println("|              5. Cadastrar manutenção    |");
+        System.out.println("|              6. Encerrar manutenção     |");
+        System.out.println("|              7. Sair                    |");
+        System.out.println("|_________________________________________|");
         System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = input.nextInt();
@@ -149,15 +150,15 @@ public class projetoDanielKistemacher_editado {
         Scanner input = new Scanner(System.in);
         
         while (opcaoEscolhida != 5) {
-            System.out.println("\n ===== MENU INCLUIR =====");
-            System.out.println("1. Incluir pessoa");
-            System.out.println("2. Incluir tipos de objeto");
-            System.out.println("3. Incluir objeto");
-            System.out.println("4. Incluir empréstimo");
-            System.out.println("5. Incluir devolução de empréstimo");
-            System.out.println("6. Incluir baixa de objeto");
-            System.out.println("7. Voltar ao menu principal");
-            System.out.println("8. Sair");
+            System.out.println("\n _______________ MENU INCLUIR _______________");
+            System.out.println(" 1. Incluir pessoa");
+            System.out.println(" 2. Incluir tipos de objeto");
+            System.out.println(" 3. Incluir objeto");
+            System.out.println(" 4. Incluir empréstimo");
+            System.out.println(" 5. Incluir devolução de empréstimo");
+            System.out.println(" 6. Incluir baixa de objeto");
+            System.out.println(" 7. Voltar ao menu principal");
+            System.out.println(" 8. Sair");
             System.out.print("Digite o número da opção: ");
 
             opcaoEscolhida = input.nextInt();
@@ -203,7 +204,7 @@ public class projetoDanielKistemacher_editado {
                         System.out.print("Informe o código do tipo de objeto: ");
                         int opcao = input.nextInt();
                         objetos[linha][1] = tiposObjeto[opcao];
-                        objetos[linha][2] = "DISPONIVEL";                        
+                        objetos[linha][2] = "DISPONIVEL";                       
                         
                         System.out.println("Objeto cadastrado com sucesso! \n");
                     }
@@ -249,6 +250,7 @@ public class projetoDanielKistemacher_editado {
                     int codigoObjeto = input.nextInt();
                     objetos[codigoObjeto][2] = "DISPONIVEL";
                     empObjetos[codigoEmp][3] = "DEVOLVIDO";
+                    System.out.println("Empréstimo devolvido com sucesso!");
                     menuIncluir();
                     break;
                 case 6:
@@ -276,15 +278,15 @@ public class projetoDanielKistemacher_editado {
 
     public static void menuConsultar() {
         Scanner input = new Scanner(System.in);
-        System.out.println("\n ===== MENU CONSULTAR =====");
-        System.out.println("1. Consultar pessoas");
-        System.out.println("2. Consultar tipos de objetos");
-        System.out.println("3. Consultar objetos");
-        System.out.println("4. Consultar empréstimos");
-        System.out.println("5. Consultar manutenções");
-        System.out.println("6. Consultar objetos conforme situação");
-        System.out.println("7. Voltar ao menu principal");
-        System.out.println("8. Sair");
+        System.out.println("\n _______________ MENU CONSULTAR _______________");
+        System.out.println(" 1. Consultar pessoas");
+        System.out.println(" 2. Consultar tipos de objetos");
+        System.out.println(" 3. Consultar objetos");
+        System.out.println(" 4. Consultar empréstimos");
+        System.out.println(" 5. Consultar manutenções");
+        System.out.println(" 6. Consultar objetos conforme situação");
+        System.out.println(" 7. Voltar ao menu principal");
+        System.out.println(" 8. Sair");
         System.out.print("Digite o número da opção: ");
 
         int opcaoEscolhida = input.nextInt();
@@ -320,14 +322,14 @@ public class projetoDanielKistemacher_editado {
     public static void menuExcluir() {
         int opcaoEscolhida, opcaoExcluir;
         Scanner input = new Scanner(System.in);
-        System.out.println("\n===== MENU EXCLUIR =====");
-        System.out.println("1. Excluir Pessoas");
-        System.out.println("2. Excluir tipos de objetos");
-        System.out.println("3. Excluir objetos");
-        System.out.println("4. Excluir empréstimos");
-        System.out.println("5. Excluir manutenções");
-        System.out.println("6. Voltar ao menu principal");
-        System.out.println("7. Sair");
+        System.out.println("\n _______________ MENU EXCLUIR _______________");
+        System.out.println(" 1. Excluir Pessoas");
+        System.out.println(" 2. Excluir tipos de objetos");
+        System.out.println(" 3. Excluir objetos");
+        System.out.println(" 4. Excluir empréstimos");
+        System.out.println(" 5. Excluir manutenções");
+        System.out.println(" 6. Voltar ao menu principal");
+        System.out.println(" 7. Sair");
         System.out.print("Digite o número da opção: ");
 
         opcaoEscolhida = input.nextInt();
@@ -335,7 +337,7 @@ public class projetoDanielKistemacher_editado {
         switch (opcaoEscolhida) {
             case 1:
                 consultarPessoas();
-                System.out.print("Informe o código do cadastro que você deseja excluir: ");
+                System.out.print("Informe o código da pessoa que você deseja excluir: ");
                 opcaoExcluir = input.nextInt();
                 input.nextLine();
                 pessoas[opcaoExcluir][0] = "";
@@ -357,10 +359,14 @@ public class projetoDanielKistemacher_editado {
                 System.out.print("Informe o código do objeto que você deseja excluir: ");
                 opcaoExcluir = input.nextInt();
                 input.nextLine();
-                objetos[opcaoExcluir][0] = "";
-                objetos[opcaoExcluir][1] = "";
-                objetos[opcaoExcluir][2] = "";
-                System.out.println("Objeto excluído com sucesso! \n");
+                if (objetos[opcaoExcluir][2] == "DISPONIVEL" ){
+                    objetos[opcaoExcluir][0] = "";
+                    objetos[opcaoExcluir][1] = "";
+                    objetos[opcaoExcluir][2] = "";
+                    System.out.println("Objeto excluído com sucesso! \n");
+                } else {
+                    System.out.println("Este objeto não está disponível, portanto não pode ser excluído!");
+                }    
                 menuExcluir();
                 break;
             case 4: 
@@ -368,10 +374,14 @@ public class projetoDanielKistemacher_editado {
                 System.out.print("Informe o código do empréstimo que você deseja excluir: ");
                 opcaoExcluir = input.nextInt();
                 input.nextLine();
-                empObjetos[opcaoExcluir][0] = "";
-                empObjetos[opcaoExcluir][1] = "";
-                empObjetos[opcaoExcluir][2] = "";
-                System.out.println("Empréstimo excluído com sucesso! \n");
+                if (empObjetos[opcaoExcluir][3] != "DEVOLVIDO"){
+                    empObjetos[opcaoExcluir][0] = "";
+                    empObjetos[opcaoExcluir][1] = "";
+                    empObjetos[opcaoExcluir][2] = "";
+                    System.out.println("Empréstimo excluído com sucesso! \n");
+                } else {
+                    System.out.println("Este empréstimo está em aberto, portanto não pode ser excluído!");
+                }    
                 menuExcluir();
                 break;
             case 5:
@@ -385,8 +395,7 @@ public class projetoDanielKistemacher_editado {
                 System.out.println("Manutenção excluída com sucesso! \n");
                 menuExcluir();
                 break;
-            case 6:
-                menuExcluir();
+            case 6: menuPrincipal();
                 break;
             case 7: System.exit(0);
                 break;
@@ -398,14 +407,14 @@ public class projetoDanielKistemacher_editado {
     public static void menuEditar() {
         int opcaoMenu, opcaoEditar;
         Scanner input = new Scanner(System.in);
-        System.out.println("\n===== MENU EDITAR =====");
-        System.out.println("1. Editar pessoas");
-        System.out.println("2. Editar tipos de objetos");
-        System.out.println("3. Editar objetos");
-        System.out.println("4. Editar empréstimos");
-        System.out.println("5. Editar manutenções");
-        System.out.println("6. Voltar ao menu principal");
-        System.out.println("7. Sair");
+        System.out.println("\n _______________ MENU EDITAR _______________");
+        System.out.println(" 1. Editar pessoas");
+        System.out.println(" 2. Editar tipos de objetos");
+        System.out.println(" 3. Editar objetos");
+        System.out.println(" 4. Editar empréstimos");
+        System.out.println(" 5. Editar manutenções");
+        System.out.println(" 6. Voltar ao menu principal");
+        System.out.println(" 7. Sair");
         System.out.print("Digite o número da opção: ");
 
         opcaoMenu = input.nextInt();
@@ -440,8 +449,10 @@ public class projetoDanielKistemacher_editado {
                 input.nextLine();
                 System.out.print("Nome do objeto: ");
                 objetos[opcaoEditar][0] = input.nextLine().toUpperCase();
-                System.out.print("Tipo de objeto: ");
-                objetos[opcaoEditar][1] = input.nextLine().toUpperCase();
+                consultarTiposObjetos();
+                System.out.print("Informe o código do tipo de objeto: ");
+                int opcao = input.nextInt();
+                objetos[opcaoEditar][1] = tiposObjeto[opcao];
                 System.out.println("Objeto alterado com sucesso! \n");
                 menuEditar();
                 break;
@@ -483,86 +494,98 @@ public class projetoDanielKistemacher_editado {
     }
     
     public static void consultarPessoas(){
-        System.out.println("\n==== PESSOAS CADASTRADAS ====");
+        System.out.println("\n _______________ PESSOAS CADASTRADAS _______________");
         for (int x = 0; x < pessoas.length; x++) {
-            System.out.println("Código: " + x);
-            System.out.println("CPF: " + pessoas[x][0]);
-            System.out.println("Nome: " + pessoas[x][1]);
-            System.out.println("==============");
+            System.out.println(" Código: " + x);
+            System.out.println(" CPF: " + pessoas[x][0]);
+            System.out.println(" Nome: " + pessoas[x][1]);
+            System.out.println("--------------------");
         }
     }
     
     public static void consultarTiposObjetos(){
-        System.out.println("\n==== TIPOS DE OBJETOS CADASTRADOS ====");
+        System.out.println("\n _______________ TIPOS DE OBJETOS CADASTRADOS _______________");
         for (int x = 0; x < tiposObjeto.length; x++) {
-            System.out.println("Código: " + x);
-            System.out.println("Tipo de objeto: " + tiposObjeto[x]);
-            System.out.println("==============");
+            System.out.println(" Código: " + x);
+            System.out.println(" Tipo de objeto: " + tiposObjeto[x]);
+            System.out.println("--------------------");
         }
     }
     
     public static void consultarObjetos(){
-        System.out.println("\n==== OBJETOS CADASTRADOS ====");
+        System.out.println("\n _______________ OBJETOS CADASTRADOS _______________");
         for (int x = 0; x < objetos.length; x++) {
-            System.out.println("Código: " + x);
-            System.out.println("Nome: " + objetos[x][0]);
-            System.out.println("Tipo de objeto: " + objetos[x][1]);
-            System.out.println("Situação: " + objetos[x][2]);
-            System.out.println("==============");
+            System.out.println(" Código: " + x);
+            System.out.println(" Nome: " + objetos[x][0]);
+            System.out.println(" Tipo de objeto: " + objetos[x][1]);
+            System.out.println(" Situação: " + objetos[x][2]);
+            System.out.println("--------------------");
         }
     }
     
     public static void consultarManutencoes(){
-        System.out.println("\n==== MANUTENÇÕES CADASTRADAS ====");
+        System.out.println("\n _______________ MANUTENÇÕES CADASTRADAS _______________");
         for (int x = 0; x < manutObjetos.length; x++) {
-            System.out.println("Código: " + x);
-            System.out.println("Nome objeto: " + manutObjetos[x][0]);
-            System.out.println("Descrição da manut.: " + manutObjetos[x][1]);
-            System.out.println("Status: " + manutObjetos[x][2]);
-            System.out.println("==============");
+            System.out.println(" Código: " + x);
+            System.out.println(" Nome objeto: " + manutObjetos[x][0]);
+            System.out.println(" Descrição da manut.: " + manutObjetos[x][1]);
+            System.out.println(" Status: " + manutObjetos[x][2]);
+            System.out.println("--------------------");
         }
     }
     
     public static void consultarEmprestimos(){
-     System.out.println("\n==== EMPRÉSTIMOS CADASTRADOS ====");
+     System.out.println("\n _______________ EMPRÉSTIMOS CADASTRADOS _______________");
         for (int x = 0; x < empObjetos.length; x++) {
-            System.out.println("Código: " + x);
-            System.out.println("Nome objeto: " + empObjetos[x][0]);
-            System.out.println("Quem emprestou: " + empObjetos[x][1]);
-            System.out.println("Quem pegou emprestado: " + empObjetos[x][2]);
-            System.out.println("Situação: " + empObjetos[x][3]);
-            System.out.println("==============");
+            System.out.println(" Código: " + x);
+            System.out.println(" Nome objeto: " + empObjetos[x][0]);
+            System.out.println(" Quem emprestou: " + empObjetos[x][1]);
+            System.out.println(" Quem pegou emprestado: " + empObjetos[x][2]);
+            System.out.println(" Situação: " + empObjetos[x][3]);
+            System.out.println("--------------------");
         }   
     }
     
     public static void consultarObjetosSituacao(){
         Scanner input = new Scanner(System.in);
         
-        System.out.println("Deseja consultar pelo tipo de objeto? (1=SIM / 2=NÂO)");
+        System.out.print("Deseja consultar pelo tipo de objeto? Digite '1'(Sim) ou '2'(Não): ");
         int opcao = input.nextInt();
         if (opcao == 1){
             consultarTiposObjetos();
             System.out.print("Informe o código do tipo de objeto que deseja consultar: ");
             int opcaoTipo = input.nextInt();
+            System.out.println("_______________ OBJETOS DISPONÍVEIS _______________");
             for (int x=0; x<objetos.length; x++){
                 if (objetos[x][1] == tiposObjeto[opcaoTipo]){
                     if (objetos[x][2] == "DISPONIVEL"){
-                        System.out.println("===== OBJETOS DISPONÍVEIS =====");
                         System.out.println("Nome: " + objetos[x][0]);
                         System.out.println("Tipo de objeto: " + objetos[x][1]);
                     }
+                }
+            }
+            System.out.println("\n_______________ OBJETOS EMPRESTADOS _______________");
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][1] == tiposObjeto[opcaoTipo]){
                     if (objetos[x][2] == "EMPRESTADO"){
-                        System.out.println("\n===== OBJETOS EMPRESTADOS =====");
                         System.out.println("Nome: " + objetos[x][0]);
                         System.out.println("Tipo de objeto: " + objetos[x][1]);
                     }
+                }
+            }    
+            System.out.println("\n_______________ OBJETOS BAIXADOS _______________");
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][1] == tiposObjeto[opcaoTipo]){
                     if (objetos[x][2] == "BAIXADO"){
-                        System.out.println("\n===== OBJETOS BAIXADOS =====");  
                         System.out.println("Nome: " + objetos[x][0]);
                         System.out.println("Tipo de objeto: " + objetos[x][1]);
                     }
+                }    
+            }
+            System.out.println("\n_______________ OBJETOS EM MANUTENCAO _______________");
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][1] == tiposObjeto[opcaoTipo]){
                     if (objetos[x][2] == "EM MANUTENCAO"){
-                        System.out.println("\n===== OBJETOS EM MANUTENCAO =====");  
                         System.out.println("Nome: " + objetos[x][0]);
                         System.out.println("Tipo de objeto: " + objetos[x][1]);
                     }
@@ -570,28 +593,34 @@ public class projetoDanielKistemacher_editado {
             }
         }
         if (opcao == 2){
+            System.out.println("_______________ OBJETOS DISPONÍVEIS _______________");
             for (int x=0; x<objetos.length; x++){
                 if (objetos[x][2] == "DISPONIVEL"){
-                  System.out.println("===== OBJETOS DISPONÍVEIS =====");
-                  System.out.println("Nome: " + objetos[x][0]);
-                  System.out.println("Tipo de objeto: " + objetos[x][1]);
-                }
-                if (objetos[x][2] == "EMPRESTADO"){
-                  System.out.println("\n===== OBJETOS EMPRESTADOS =====");
-                  System.out.println("Nome: " + objetos[x][0]);
-                  System.out.println("Tipo de objeto: " + objetos[x][1]);
-                }
-                if (objetos[x][2] == "BAIXADO"){
-                  System.out.println("\n===== OBJETOS BAIXADOS =====");  
-                  System.out.println("Nome: " + objetos[x][0]);
-                  System.out.println("Tipo de objeto: " + objetos[x][1]);
-                }
-                if (objetos[x][2] == "EM MANUTENCAO"){
-                  System.out.println("\n===== OBJETOS EM MANUTENCAO =====");  
                   System.out.println("Nome: " + objetos[x][0]);
                   System.out.println("Tipo de objeto: " + objetos[x][1]);
                 }
             }
+            System.out.println("\n_______________ OBJETOS EMPRESTADOS _______________");
+            for (int x=0; x<objetos.length; x++){    
+                if (objetos[x][2] == "EMPRESTADO"){
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                }
+            }
+            System.out.println("\n_______________ OBJETOS BAIXADOS_______________");
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][2] == "BAIXADO"){
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                }
+            }
+            System.out.println("\n_______________ OBJETOS EM MANUTENCAO_______________");
+            for (int x=0; x<objetos.length; x++){
+                if (objetos[x][2] == "EM MANUTENCAO"){
+                  System.out.println("Nome: " + objetos[x][0]);
+                  System.out.println("Tipo de objeto: " + objetos[x][1]);
+                }
+            }    
         }    
     }
 }
