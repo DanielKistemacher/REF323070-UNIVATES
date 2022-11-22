@@ -112,7 +112,7 @@ public class projetoDanielKistemacher_editado {
                         manutObjetos[linha][0] = objetos[opcao][0];
                         objetos[opcao][2] = "EM MANUTENCAO";
                         input.nextLine();
-                        System.out.print("Descrição da manut.: ");
+                        System.out.print("Descrição da manutenção: ");
                         manutObjetos[linha][1] = input.nextLine().toUpperCase();
                         manutObjetos[linha][2] = "EM ABERTO";
                         System.out.println("Manutenção cadastrada com sucesso! \n");
@@ -126,13 +126,13 @@ public class projetoDanielKistemacher_editado {
                 consultarManutencoes();
                 System.out.print("Informe o código da manutenção que deseja encerrar: ");
                 int codigoManut = input.nextInt();
-                empObjetos[codigoManut][2] = "ENCERRADA";
+                manutObjetos[codigoManut][2] = "ENCERRADA";
                 consultarObjetos();
                 System.out.print("Informe o código do objeto: ");
                 int codigoObjeto = input.nextInt();
                 objetos[codigoObjeto][2] = "DISPONIVEL";
-                menuPrincipal();
                 System.out.println("Manutenção encerrada com sucesso!\n");
+                menuPrincipal();
                 break;
             case 7: System.exit(0);
                 break;
